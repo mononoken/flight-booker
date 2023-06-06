@@ -1,6 +1,6 @@
 class Airport < ApplicationRecord
-  has_many :arriving_flights, class: "Flight", inverse_of: "arrival_airport"
-  has_many :departing_flights, class: "Flight", inverse_of: "departure_airport"
+  has_many :arriving_flights, class_name: "Flight", foreign_key: "arrival_airport_id"
+  has_many :departing_flights, class_name: "Flight", foreign_key: "departure_airport_id"
 
   validates :code, presence: true, uniqueness: true
 end
