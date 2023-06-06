@@ -9,3 +9,15 @@ airports = %w[ATL AUS DEN DFW JFK LAX LGA ORD SEA SFO]
 airports.each do |code|
   Airport.create(code:)
 end
+
+10.times do
+  departure_airport_code = airports.sample
+  arrival_airport_code = (airports - [departure_airport_code]).sample
+
+  Flight.create(
+    departure_airport: Airport.find_by(code: departure_airport_code),
+    arrival_airport: Airport.find_by(code: arrival_airport_code),
+    start: rand(1.years).seconds.from_now,
+    duration: rand(6).hours + rand(59).minutes
+  )
+end
