@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departure: one
+  arrival: one
+  start: 2023-06-05 21:39:35
+  duration: 
+
+two:
+  departure: two
+  arrival: two
+  start: 2023-06-05 21:39:35
+  duration: 
