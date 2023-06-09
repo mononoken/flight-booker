@@ -1,0 +1,32 @@
+<form action="/search" method="get" accept-charset="UTF-8">
+  <h1>Search for flight</h1>
+  <fieldset>
+    <legend>Departure airport</legend>
+    <select name="departure_airport" id="departure_airport" autocomplete="off" required>
+      <%= @flights.distinct_departure_airports.each do |airport| %>
+        <option value="<%= airport %>"><%= airport %></option>
+      <% end %>
+    </select>
+  </fieldset>
+  <fieldset>
+    <legend>Arrival airport</legend>
+    <select name="arrival_airport" id="arrival_airport" autocomplete="off" required>
+      <%= @flights.distinct_arrival_airports.each do |airport| %>
+        <option value="<%= airport %>"><%= airport %></option>
+      <% end %>
+    </select>
+  </fieldset>
+  <fieldset>
+    <legend>Number of passengers</legend>
+    <select name="passenger_quantity" id="passenger_quantity" autocomplete="off" required>
+      <option value=""></option>
+    </select>
+  </fieldset>
+  <fieldset>
+    <legend>Depart</legend>
+    <select name="depart_date" id="depart_date" autocomplete="off" required>
+      <option value=""></option>
+    </select>
+  </fieldset>
+  <input>Search</input>
+</form>
