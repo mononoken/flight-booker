@@ -25,7 +25,9 @@
   <fieldset>
     <legend>Depart</legend>
     <select name="depart_date" id="depart_date" autocomplete="off" required>
-      <option value=""></option>
+      <%= @flights.distinct_depart_dates.each do |date| %>
+        <option value=""><%= date %></option>
+      <% end %>
     </select>
   </fieldset>
   <input>Search</input>
