@@ -1,43 +1,19 @@
-<form action="" method="get" accept-charset="UTF-8">
-  <h1>Search for flight</h1>
+<%= form_with url: "", method: :get do |form| %>
   <div>
-    <label for="departure_code">Departure airport</legend>
-    <select name="departure_code"
-            id="departure_code"
-            autocomplete="off"
-            required>
-      <%= @flights.departure_codes.each do |departure_code| %>
-        <option value="<%= departure_code %>"><%= departure_code %></option>
-      <% end %>
-    </select>
+    <%= form.label :departure_code %>
+    <%= form.select :departure_code, @flights.departure_codes %>
   </div>
   <div>
-    <label for="arrival_code">Arrival airport</legend>
-    <select name="arrival_code"
-            id="arrival_code"
-            autocomplete="off"
-            required>
-      <%= @flights.arrival_codes.each do |arrival_code| %>
-        <option value="<%= arrival_code %>"><%= arrival_code %></option>
-      <% end %>
-    </select>
+    <%= form.label :arrival_code %>
+    <%= form.select :arrival_code, @flights.arrival_codes %>
   </div>
   <div>
-    <label for="num_tickets">Number of passengers</legend>
-    <select name="num_tickets" id="num_tickets" autocomplete="off" required>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
+    <%= form.label :num_tickets %>
+    <%= form.select :num_tickets, (1..4).to_a %>
   </div>
   <div>
-    <label for="date">Depart</legend>
-    <select name="date" id="date" autocomplete="off" required>
-      <%= @flights.distinct_depart_dates.each do |date| %>
-        <option value="<%= date %>"><%= date %></option>
-      <% end %>
-    </select>
+    <%= form.label :date %>
+    <%= form.select :date, @flights.distinct_depart_dates %>
   </div>
-  <input type="submit" value="Search" data-disable-with="Search">
-</form
+  <%= form.submit "Search" %>
+<% end %>
