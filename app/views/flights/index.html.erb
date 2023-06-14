@@ -1,34 +1,43 @@
-<form action="/search" method="get" accept-charset="UTF-8">
+<form action="" method="get" accept-charset="UTF-8">
   <h1>Search for flight</h1>
-  <fieldset>
-    <legend>Departure airport</legend>
-    <select name="departure_airport" id="departure_airport" autocomplete="off" required>
-      <%= @flights.distinct_departure_airports.each do |airport| %>
-        <option value="<%= airport %>"><%= airport %></option>
+  <div>
+    <label for="departure_code">Departure airport</legend>
+    <select name="departure_code"
+            id="departure_code"
+            autocomplete="off"
+            required>
+      <%= @flights.departure_codes.each do |departure_code| %>
+        <option value="<%= departure_code %>"><%= departure_code %></option>
       <% end %>
     </select>
-  </fieldset>
-  <fieldset>
-    <legend>Arrival airport</legend>
-    <select name="arrival_airport" id="arrival_airport" autocomplete="off" required>
-      <%= @flights.distinct_arrival_airports.each do |airport| %>
-        <option value="<%= airport %>"><%= airport %></option>
+  </div>
+  <div>
+    <label for="arrival_code">Arrival airport</legend>
+    <select name="arrival_code"
+            id="arrival_code"
+            autocomplete="off"
+            required>
+      <%= @flights.arrival_codes.each do |arrival_code| %>
+        <option value="<%= arrival_code %>"><%= arrival_code %></option>
       <% end %>
     </select>
-  </fieldset>
-  <fieldset>
-    <legend>Number of passengers</legend>
-    <select name="passenger_quantity" id="passenger_quantity" autocomplete="off" required>
-      <option value=""></option>
+  </div>
+  <div>
+    <label for="num_tickets">Number of passengers</legend>
+    <select name="num_tickets" id="num_tickets" autocomplete="off" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
     </select>
-  </fieldset>
-  <fieldset>
-    <legend>Depart</legend>
-    <select name="depart_date" id="depart_date" autocomplete="off" required>
+  </div>
+  <div>
+    <label for="date">Depart</legend>
+    <select name="date" id="date" autocomplete="off" required>
       <%= @flights.distinct_depart_dates.each do |date| %>
-        <option value=""><%= date %></option>
+        <option value="<%= date %>"><%= date %></option>
       <% end %>
     </select>
-  </fieldset>
-  <input>Search</input>
-</form>
+  </div>
+  <input type="submit" value="Search" data-disable-with="Search">
+</form
