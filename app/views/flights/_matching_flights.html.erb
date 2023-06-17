@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "matching_flights" do %>
+  <%= "No matching flights" if matching_flights.empty? %>
+
+  <ul>
+    <% matching_flights.each do |flight| %>
+      <li>
+        <div>Flight number: <%= flight.id %></div>
+        <div>Depart: <%= flight.departure_airport.code %></div>
+        <div>Arrive: <%= flight.arrival_airport.code %></div>
+        <div>Start: <%= flight.start %></div>
+        <div>Duration: <%= flight.duration %></div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

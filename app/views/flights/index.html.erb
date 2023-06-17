@@ -1,19 +1,26 @@
-<%= form_with url: "", method: :get do |form| %>
-  <div>
-    <%= form.label :departure_code %>
-    <%= form.select :departure_code, @flights.departure_codes %>
-  </div>
-  <div>
-    <%= form.label :arrival_code %>
-    <%= form.select :arrival_code, @flights.arrival_codes %>
-  </div>
+<%= form_with url: flights_path, method: :get,
+              data: {turbo_frame: "matching_flights", turbo_action: "advance"} do |form| %>
+  <%= form.fields_for :search do |search_form| %>
+    <div>
+      <%= search_form.label :departure_code %>
+      <%= search_form.select :departure_code, @flights.departure_codes %>
+    </div>
+    <div>
+      <%= search_form.label :arrival_code %>
+      <%= search_form.select :arrival_code, @flights.arrival_codes %>
+    </div>
+    <div>
+      <%= search_form.label :date %>
+      <%= search_form.select :date, @flights.distinct_depart_dates %>
+    </div>
+  <% end %>
   <div>
     <%= form.label :num_tickets %>
     <%= form.select :num_tickets, (1..4).to_a %>
   </div>
-  <div>
-    <%= form.label :date %>
-    <%= form.select :date, @flights.distinct_depart_dates %>
-  </div>
   <%= form.submit "Search" %>
 <% end %>
+
+<div>
+  <%= render "matching_flights", matching_flights: @matching_flights %>
+</div>
