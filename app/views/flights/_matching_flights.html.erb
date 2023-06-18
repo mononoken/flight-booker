@@ -7,8 +7,9 @@
         <div>Flight number: <%= flight.id %></div>
         <div>Depart: <%= flight.departure_airport.code %></div>
         <div>Arrive: <%= flight.arrival_airport.code %></div>
-        <div>Start: <%= flight.start %></div>
-        <div>Duration: <%= flight.duration %></div>
+        <div>Date: <%= flight.start.strftime("%F") %></div>
+        <div>Departs at: <%= flight.start.strftime("%I:%M%p") %></div>
+        <div>Duration: <%= flight.duration.inspect %></div>
       </li>
     <% end %>
   </ul>
