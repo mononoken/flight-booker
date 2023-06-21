@@ -6,13 +6,12 @@ class FlightsController < ApplicationController
       @matching_flights = Flight.filter_by_date(params[:search][:date])
         .filter_by_arrival_code(params[:search][:arrival_code])
         .filter_by_departure_code(params[:search][:departure_code])
-
-      # if turbo_frame_request?
-      #   render partial: "matching_flights", locals: {matching_flights: @matching_flights}
-      # else
-      #   render :index
-      # end
     end
+    # if turbo_frame_request?
+    #   render partial: "matching_flights", locals: {matching_flights: @matching_flights}
+    # else
+    #   render :index
+    # end
   end
 
   def show
