@@ -1,22 +1,21 @@
-<%= turbo_frame_tag "matching_flights" do %>
-  <%= "No matching flights" if matching_flights.empty? %>
+<%= "No matching flights" if matching_flights.empty? %>
 
-  <%= form_with url: "bookings/new", method: :get do |form| %>
-    <ul>
-      <% matching_flights.each do |flight| %>
-        <li>
-          <%= form.radio_button :flight_id, flight.id %>
-          <ul>
-            <li>Flight number: <%= flight.id %></li>
-            <li>Depart: <%= flight.departure_airport.code %></li>
-            <li>Arrive: <%= flight.arrival_airport.code %></li>
-            <li>Date: <%= flight.start.strftime("%F") %></li>
-            <li>Departs at: <%= flight.start.strftime("%I:%M%p") %></li>
-            <li>Duration: <%= flight.duration.inspect %></li>
-          </ul>
-        </li>
-      <% end %>
-    </ul>
-    <%= form.submit "Select" %>
-  <% end %>
+<%= form_with url: new_booking_path, method: :get do |form| %>
+  <ul>
+    <% matching_flights.each do |flight| %>
+      <li>
+        <%= form.radio_button :flight_id, flight.id %>
+        <%# Add form label %>
+        <ul>
+          <li>Flight number: <%= flight.id %></li>
+          <li>Depart: <%= flight.departure_airport.code %></li>
+          <li>Arrive: <%= flight.arrival_airport.code %></li>
+          <li>Date: <%= flight.start.strftime("%F") %></li>
+          <li>Departs at: <%= flight.start.strftime("%I:%M%p") %></li>
+          <li>Duration: <%= flight.duration.inspect %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+  <%= form.submit "Select" %>
 <% end %>
