@@ -1,13 +1,13 @@
 class Flight < ApplicationRecord
-  def self.search(params)
-    where(
-      "start BETWEEN ? AND ?", params[:date].to_date.beginning_of_day, params[:date].to_date.end_of_day
-    )
-      .where(
-        departure_airport_id: Airport.find_by(code: params[:departure_code])&.id,
-        arrival_airport_id: Airport.find_by(code: params[:arrival_code])&.id
-      )
-  end
+  scope :filter_by_date, ->(date) {
+    where("start BETWEEN ? AND ?", date.to_date.beginning_of_day, date.to_date.end_of_day)
+  }
+  scope :filter_by_departure_code, ->(departure_code) {
+    joins(:departure_airport).where(departure_airport: {code: departure_code})
+  }
+  scope :filter_by_arrival_code, ->(arrival_code) {
+    joins(:arrival_airport).where(arrival_airport: {code: arrival_code})
+  }
 
   scope :departure_codes,
     -> { joins(:departure_airport).distinct.order(:code).pluck(:code) }
