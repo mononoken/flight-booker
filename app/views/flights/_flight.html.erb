@@ -1,0 +1,7 @@
+<ul class="flight-details">
+  <li>Depart: <%= flight.departure_airport.code %></li>
+  <li>Arrive: <%= flight.arrival_airport.code %></li>
+  <li>Date: <%= flight.start.strftime("%F") %></li>
+  <li>Departs at: <%= flight.start.strftime("%I:%M%p") %></li>
+  <li>Duration: <%= flight.duration.inspect %></li>
+</ul>

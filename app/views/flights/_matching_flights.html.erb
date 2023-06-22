@@ -7,17 +7,11 @@
         <li class="flight">
           <%= form.radio_button :flight_id, flight.id %>
           <%= form.label :flight_id, "Flight #{flight.id} details:" %>
-          <ul class="flight-details">
-            <li>Depart: <%= flight.departure_airport.code %></li>
-            <li>Arrive: <%= flight.arrival_airport.code %></li>
-            <li>Date: <%= flight.start.strftime("%F") %></li>
-            <li>Departs at: <%= flight.start.strftime("%I:%M%p") %></li>
-            <li>Duration: <%= flight.duration.inspect %></li>
-          </ul>
+          <%= render partial: "flight", locals: {flight: flight}%>
         </li>
       <% end %>
     </ul>
-    <%= form.hidden_field :num_passengers, value: "num_tickets" %>
+    <%= form.hidden_field :num_tickets, value: params[:num_tickets] %>
     <%= form.submit "Select" %>
   <% end %>
 <% end %>
