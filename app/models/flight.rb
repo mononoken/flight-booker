@@ -1,6 +1,8 @@
 class Flight < ApplicationRecord
   scope :filter_by_date, ->(date) {
-    where("start BETWEEN ? AND ?", date.to_date.beginning_of_day, date.to_date.end_of_day)
+    where("start BETWEEN ? AND ?",
+      date.to_date.beginning_of_day, date.to_date.end_of_day)
+      .order(:start)
   }
   scope :filter_by_departure_code, ->(departure_code) {
     joins(:departure_airport).where(departure_airport: {code: departure_code})
@@ -22,6 +24,8 @@ class Flight < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :passengers, through: :bookings
-  belongs_to :departure_airport, class_name: "Airport", inverse_of: "departing_flights"
-  belongs_to :arrival_airport, class_name: "Airport", inverse_of: "arriving_flights"
+  belongs_to :departure_airport, class_name: "Airport",
+    inverse_of: "departing_flights"
+  belongs_to :arrival_airport, class_name: "Airport",
+    inverse_of: "arriving_flights"
 end
