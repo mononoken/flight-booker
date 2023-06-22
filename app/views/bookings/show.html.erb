@@ -1,2 +1,12 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<h1>Booking</h1>
+<%= render partial: "flights/flight", locals: {flight: @flight} %>
+
+<h2>Passengers:</h2>
+<ol>
+  <% @booking.passengers.each do |passenger| %>
+    <li>
+      <%= passenger.name %>
+      <%= passenger.email %>
+    </li>
+  <% end %>
+</ol>
