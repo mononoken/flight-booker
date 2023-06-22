@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   def new
-    @booking = Booking.new(flight_id: params[:flight_id])
-
     @flight = Flight.find(params[:flight_id])
+
+    @booking = Booking.new(flight_id: params[:flight_id])
 
     @num_tickets = params[:num_tickets].to_i
     @num_tickets.times { @booking.passengers.build }
@@ -10,10 +10,6 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @num_tickets = params[:num_tickets].to_i
-    @num_tickets.times do
-      @booking.passengers.build(booking_params[:passengers])
-    end
 
     if @booking.save
       redirect_to @booking
