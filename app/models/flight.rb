@@ -17,10 +17,10 @@ class Flight < ApplicationRecord
     -> {
       distinct.order(:start).pluck(:start).map do |start_datetime|
         start_datetime.strftime("%F")
-      end
+      end.uniq
     }
 
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :passengers, through: :bookings
   belongs_to :departure_airport, class_name: "Airport", inverse_of: "departing_flights"
   belongs_to :arrival_airport, class_name: "Airport", inverse_of: "arriving_flights"
