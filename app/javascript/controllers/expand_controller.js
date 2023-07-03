@@ -16,4 +16,15 @@ export default class extends Controller {
     // Insert template content before the target div.
     this.targetTarget.insertAdjacentHTML("beforebegin", newField);
   }
+
+  // Remove the element containing this action
+  remove() {
+    const container = event.currentTarget.parentNode;
+    const liCount = this.element.querySelectorAll("li").length;
+
+    // Don't remove if last item in the list
+    if (liCount > 1) {
+      container.remove();
+    }
+  }
 }

@@ -13,6 +13,8 @@
 
           <%= passengers_form.label :email %>
           <%= passengers_form.email_field :email %>
+
+          <button type="button" data-action="expand#remove">Remove Passenger</button>
         </li>
       </template>
     <% end %>
@@ -23,6 +25,9 @@
 
         <%= passengers_form.label :email %>
         <%= passengers_form.email_field :email %>
+
+
+        <button type="button" data-action="expand#remove">Remove Passenger</button>
       </li>
     <% end %>
     <div data-expand-target="target"></div>
