@@ -7,6 +7,7 @@ export default class extends Controller {
     this.templateHTML = this.templateTarget.innerHTML;
   }
 
+  // Add clone of template content to element
   add() {
     const newField = this.templateHTML.replace(
       /RECORD_INDEX/g,
