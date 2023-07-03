@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
       @booking.passengers.each do |passenger|
         PassengerMailer
           .with(booking: @booking, passenger:)
-          .welcome_email.deliver_later
+          .confirmation_email.deliver_later
       end
 
       redirect_to @booking
