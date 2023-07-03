@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for using Flight Booker, <%= @passenger.name %>!</h1>
+    <p>
+      You have successfully created a booking!
+    </p>
+    <div>
+      <div>Here are your booking details:</div>
+      <%= render partial: "flights/flight", locals: {flight: @flight} %>
+    </div>
+    <p>
+      To view your booking on the site, just follow this link: <%= @url %>
+    </p>
+    <p>Thanks for flying with us and have a great trip!</p>
+  </body>
+</html>

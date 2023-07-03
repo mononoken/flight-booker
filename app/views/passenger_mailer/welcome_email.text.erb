@@ -1,0 +1,14 @@
+Thank you for using Flight Booker, <%= @passenger.name %>!
+===============================================================================
+You have successfully created a booking!
+
+Here are your booking details:
+- Depart: <%= @flight.departure_airport.code %>
+- Arrive: <%= @flight.arrival_airport.code %>
+- Date: <%= @flight.start.strftime("%F") %>
+- Departs at: <%= @flight.start.strftime("%I:%M%p") %>
+- Duration: <%= @flight.duration.inspect %>
+
+To view your booking on the site, just follow this link: <%= @url %>
+
+Thanks for flying with us and have a great trip!
