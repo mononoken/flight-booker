@@ -1,10 +1,10 @@
 # # Flight Booker
 
-![A screenshot showing a preview of the project.](screenshots/screenshot.png "Project Preview")
+<!-- ![A screenshot showing a preview of the project.](screenshots/screenshot.png "Project Preview") -->
 
 This app allows users to simulate booking tickets for one-way flights. It aims to practice creating nested forms.
 
-[Click here to see a live-preview hosted on Github).](https://mononoken.github.io/<project_link>/)
+<!-- [Click here to see a live-preview hosted on Github).](https://mononoken.github.io/<project_link>/) -->
 
 ## Table of Contents
 
@@ -14,7 +14,9 @@ This app allows users to simulate booking tickets for one-way flights. It aims t
 
 ## General Information
 
-tl
+In this project, nested forms are used to create one-way flight bookings for multiple passengers per booking. The user selects a flight departure and destination and as well as date to view the flights available. This is achieved by setting up a search that utilizes multiple parameters.
+
+Later, [Stimulus](https://stimulus.hotwired.dev/) was used to add some dynamic behavior to the booking form. A button was added to add additional passengers to the booking as well as a button to remove passengers from the booking form.
 
 ## Acknowledgements
 
