@@ -18,6 +18,8 @@ In this project, nested forms are used to create one-way flight bookings for mul
 
 Later, [Stimulus](https://stimulus.hotwired.dev/) was used to add some dynamic behavior to the booking form. A button was added to add additional passengers to the booking as well as a button to remove passengers from the booking form.
 
+Confirmation emails were also set up to be sent to each passenger when the booking was complete. For this, [letter_opener](https://github.com/ryanb/letter_opener) was used to test the emails.
+
 ## Acknowledgements
 
 - [The Odin Project](https://www.theodinproject.com), my primary guide in the vast sea of web-development learning.
