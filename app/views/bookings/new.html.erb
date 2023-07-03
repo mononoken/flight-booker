@@ -4,7 +4,18 @@
 <%= render partial: "flights/flight", locals: {flight: @flight}%>
 <%= form_with model: @booking do |form| %>
   <%= form.hidden_field :flight_id, value: @flight.id %>
-  <ul>
+  <ul data-controller="expand">
+    <%= form.fields_for :passengers, child_index: "RECORD_INDEX" do |passengers_form| %>
+      <template data-expand-target="template">
+        <li>
+          <%= passengers_form.label :name %>
+          <%= passengers_form.text_field :name %>
+
+          <%= passengers_form.label :email %>
+          <%= passengers_form.email_field :email %>
+        </li>
+      </template>
+    <% end %>
     <%= form.fields_for :passengers do |passengers_form| %>
       <li>
         <%= passengers_form.label :name %>
@@ -14,6 +25,8 @@
         <%= passengers_form.email_field :email %>
       </li>
     <% end %>
+    <div data-expand-target="target"></div>
+    <button type="button" data-action="expand#add">Add Passenger</button>
   </ul>
   <%= form.submit %>
 <% end %>
